@@ -12,10 +12,10 @@
     ],
     "require": {
         "php": ">=5.4",
-        "h4cc/wkhtmltopdf-i386": "0.12.x",
-        "h4cc/wkhtmltoimage-i386": "0.12.x",
-        "h4cc/wkhtmltopdf-amd64": "0.12.x",
-        "h4cc/wkhtmltoimage-amd64": "0.12.x"
+        "h4cc/wkhtmltopdf-i386": "0.12.2.*",
+        "h4cc/wkhtmltoimage-i386": "0.12.2.*",
+        "h4cc/wkhtmltopdf-amd64": "0.12.2.*",
+        "h4cc/wkhtmltoimage-amd64": "0.12.2.*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.6.*",
