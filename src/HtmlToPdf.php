@@ -204,7 +204,7 @@ class HtmlToPdf
             throw new HtmlToPdfException('Binary path must be absolute');
         }
 
-        $this->_binPath = $realPath . DIRECTORY_SEPARATOR;
+        $this->binPath = $realPath . DIRECTORY_SEPARATOR;
         return $this;
     }
 
@@ -231,7 +231,7 @@ class HtmlToPdf
      */
     public function setFileName($fileName = '')
     {
-        $this->_fileName = $fileName;
+        $this->fileName = $fileName;
         return $this;
     }
 
@@ -274,7 +274,7 @@ class HtmlToPdf
             throw new HtmlToPdfException('Input must be either a valid URL or HTML markup');
         }
 
-        $this->_input = $input;
+        $this->input = $input;
         return $this;
     }
 
