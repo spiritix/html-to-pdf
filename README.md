@@ -5,11 +5,11 @@ Convert HTML markup into beautiful PDF files using the famous wkhtmltopdf librar
 [![Build Status](https://travis-ci.org/spiritix/html-to-pdf.svg?branch=master)](https://travis-ci.org/spiritix/html-to-pdf)
 [![Code Climate](https://codeclimate.com/github/spiritix/html-to-pdf/badges/gpa.svg)](https://codeclimate.com/github/spiritix/html-to-pdf)
 [![Test Coverage](https://codeclimate.com/github/spiritix/html-to-pdf/badges/coverage.svg)](https://codeclimate.com/github/spiritix/html-to-pdf)
+[![Dependency Status](https://www.versioneye.com/user/projects/553f3b2d6f8344ac93000025/badge.svg?style=flat)](https://www.versioneye.com/user/projects/553f3b2d6f8344ac93000025)  
 [![Total Downloads](https://poser.pugx.org/spiritix/html-to-pdf/d/total.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
 [![Latest Stable Version](https://poser.pugx.org/spiritix/html-to-pdf/v/stable.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
 [![Latest Unstable Version](https://poser.pugx.org/spiritix/html-to-pdf/v/unstable.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
 [![License](https://poser.pugx.org/spiritix/html-to-pdf/license.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
-[![Dependency Status](https://www.versioneye.com/user/projects/553f3b2d6f8344ac93000025/badge.svg?style=flat)](https://www.versioneye.com/user/projects/553f3b2d6f8344ac93000025)
 
 ## Requirements
 
