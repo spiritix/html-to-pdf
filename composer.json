@@ -1,0 +1,39 @@
+{
+    "name": "spiritix/html-to-pdf",
+    "type": "library",
+    "description": "Convert HTML markup into beautiful PDF files using the famous wkhtmltopdf library.",
+    "license": "MIT",
+    "keywords": ["php","html","pdf","converter"],
+    "authors": [
+        {
+            "name": "Matthias Isler",
+            "email": "mi@matthias-isler.ch"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "h4cc/wkhtmltopdf-i386": "0.12.2.*",
+        "h4cc/wkhtmltoimage-i386": "0.12.2.*",
+        "h4cc/wkhtmltopdf-amd64": "0.12.2.*",
+        "h4cc/wkhtmltoimage-amd64": "0.12.2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.6.*",
+        "codeclimate/php-test-reporter": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spiritix\\HtmlToPdf\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spiritix\\HtmlToPdf\\Tests\\": "tests"
+        }
+    },
+    "archive": {
+        "exclude": ["/tests"]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,27 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+  - hhvm
+  
+matrix:
+  allow_failures:
+    - php: 7.0
+    - php: hhvm
+
+before_script:
+  - composer self-update
+  - composer install --prefer-source --no-interaction
+
+script:
+  - phpunit
+
+after_script:
+  - vendor/bin/test-reporter
+
+addons:
+  code_climate:
+    repo_token: 72fdb35486fc7a2425c77a9722a02e521118bcacf544701a2afa91840701038f
