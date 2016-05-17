@@ -4,96 +4,38 @@ Convert HTML markup into beautiful PDF files using the famous wkhtmltopdf librar
 
 [![Build Status](https://travis-ci.org/spiritix/html-to-pdf.svg?branch=master)](https://travis-ci.org/spiritix/html-to-pdf)
 [![Code Climate](https://codeclimate.com/github/spiritix/html-to-pdf/badges/gpa.svg)](https://codeclimate.com/github/spiritix/html-to-pdf)
-[![Test Coverage](https://codeclimate.com/github/spiritix/html-to-pdf/badges/coverage.svg)](https://codeclimate.com/github/spiritix/html-to-pdf)
-[![Dependency Status](https://www.versioneye.com/user/projects/553f3b2d6f8344ac93000025/badge.svg?style=flat)](https://www.versioneye.com/user/projects/553f3b2d6f8344ac93000025)  
 [![Total Downloads](https://poser.pugx.org/spiritix/html-to-pdf/d/total.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
 [![Latest Stable Version](https://poser.pugx.org/spiritix/html-to-pdf/v/stable.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
 [![Latest Unstable Version](https://poser.pugx.org/spiritix/html-to-pdf/v/unstable.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
 [![License](https://poser.pugx.org/spiritix/html-to-pdf/license.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
 
+## Features
+
+- Does not require any complex installation or configuration, works out of the box
+- Offers all [options](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt) of wkhtmltopdf
+- Possibility to get the HTML from an external URL
+- Possibility to download, embed or save the generated PDF files (or even get their contents as a string)
+- PHP7 and HHVM ready
+
 ## Requirements
 
-- PHP 5.4+
-- Enabled shell functions (proc_open)
-- Enabled 'fopen' wrappers (in order to use the URL to PDF method)
-- Unix based operating system (Windows support will be added in the future)
+- PHP 5.5+
+- Enabled program execution functions (proc_open)
+- Enabled 'fopen' wrappers (in order to use the URL to PDF functionality)
+- Unix based operating system (Windows support ~~will~~ may be added in the future)
 
 ## Installation
 
-Add ``spiritix/html-to-pdf`` as a require dependency in your ``composer.json`` file:
+HtmlToPdf can be installed via [Composer](http://getcomposer.org) by requiring the
+`spiritix/html-to-pdf` package in your project's `composer.json`.
 
-    composer require spiritix/html-to-pdf
+```sh
+php composer.phar require spiritix/html-to-pdf
+```
 
 ## Usage
 
-### Convert URL to PDF
-
-    // Initialize library and set path to vendor dir
-    $htmlToPdf = new HtmlToPdf();
-    $htmlToPdf->setBinPath(dirname(__FILE__) . '/vendor/');
-
-    // Let's set an option and render the PDF file using MODE_DOWNLOAD
-    // which forces the browser to provide the PDF as a download
-    $htmlToPdf->setOption('zoom', 2)
-       ->run(HtmlToPdf::MODE_DOWNLOAD, 'http://www.google.com', 'google.pdf');
-
-### Convert HTML string to PDF
-
-    // Initialize library and set path to vendor dir
-    $htmlToPdf = new HtmlToPdf();
-    $htmlToPdf->setBinPath(dirname(__FILE__) . '/vendor/');
-
-    // Any html code....
-    $html = '<html><body><h1>This is our HTML</h1></body></html>';
-
-    // Render the pdf file
-    // Now we are using MODE_SAVE which means that the output will be saved to a file called test.pdf
-    $htmlToPdf->run(HtmlToPdf::MODE_SAVE, $html, 'test.pdf');
-
-### More complex example
-
-     // Initialize library and set some options here
-    $htmlToPdf = new HtmlToPdf(array(
-        'margin-top' => 0,
-        'margin-right' => 10,
-        'margin-bottom' => 10,
-        'margin-left' => 0,
-        'minimum-font-size' => 8
-    ));
-    
-    // Set path to vendor dir
-    $htmlToPdf->setBinPath(dirname(__FILE__) . '/vendor/');
-
-    // Set some options, I'm intentionally using some different
-    // methods here for demonstrating the possibilities
-    $htmlToPdf->setOptions(array(
-    	'load-error-handling' => 'ignore',
-    	'margin-right' => 0
-    ))
-        ->setOption('O', 'Portrait')
-        ->setOption('grayscale');
-
-    // Oh, I forgot which value I set before..
-    echo $htmlToPdf->getOption('margin-left');
-
-    // Ok we need all options in an array
-    print_r($htmlToPdf->getOptions());
-
-    // Set filename and source URL
-    $htmlToPdf->setFileName('google.pdf')
-        ->setInput('http://www.google.ch');
-
-    // And again lets take these values and do something with them
-    echo $htmlToPdf->getFileName();
-    echo $htmlToPdf->getInput();
-
-    // Replace the filename and  the input from the example above
-    // Render the PDF file using MODE_STRING which returns the output as plain text.
-    $pdf = $htmlToPdf->run(HtmlToPdf::MODE_STRING, 'http://de.wikipedia.org/wiki/Test');
-
-    // Now we can do whatever we want with the PDF source
-    // For example let's save the source to a file..
-    file_put_contents('wiki.pdf', $pdf);
+TODO
 
 ## Options
 
@@ -197,6 +139,19 @@ Add ``spiritix/html-to-pdf`` as a require dependency in your ``composer.json`` f
     
     Options marked * may not work on some servers.
 
+## Known issues and limitations
+
+- Does not work on Windows based systems
+
+## Contributing
+
+Contributions in any form are welcome.
+Please consider the following guidelines before submitting pull requests:
+
+- **Coding standard** - It's mostly [PSR-2](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md) with some differences. 
+- **Add tests!** - Your PR won't be accepted if it doesn't have tests.
+- **Create feature branches** - I won't pull from your master branch.
+
 ## License
 
-HtmlToPdf is licensed under the MIT license.
+HtmlToPdf is free software distributed under the terms of the MIT license.
