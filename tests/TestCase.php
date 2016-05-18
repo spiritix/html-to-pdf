@@ -1,6 +1,6 @@
 <?php
 
-namespace Spiritix\LadaCache\Tests;
+namespace Spiritix\HtmlToPdf\Tests;
 
 use PHPUnit_Framework_TestCase;
 

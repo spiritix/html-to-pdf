@@ -14,7 +14,7 @@ namespace Spiritix\HtmlToPdf\Input;
 use RuntimeException;
 
 /**
- * TODO
+ * Input handler exception.
  *
  * @package Spiritix\HtmlToPdf\Input
  * @author  Matthias Isler <mi@matthias-isler.ch>

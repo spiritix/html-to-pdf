@@ -12,7 +12,7 @@
 namespace Spiritix\HtmlToPdf\Output;
 
 /**
- * TODO
+ * Output handler interface.
  *
  * @package Spiritix\HtmlToPdf\Output
  * @author  Matthias Isler <mi@matthias-isler.ch>

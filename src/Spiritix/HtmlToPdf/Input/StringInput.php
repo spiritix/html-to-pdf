@@ -12,49 +12,31 @@
 namespace Spiritix\HtmlToPdf\Input;
 
 /**
- * TODO
+ * Input handler for providing HTML markup as a string.
  *
  * @package Spiritix\HtmlToPdf\Input
  * @author  Matthias Isler <mi@matthias-isler.ch>
  */
-class StringInput implements InputInterface
+class StringInput extends AbstractInput
 {
-    /**
-     * The HTML markup.
-     *
-     * @var null|string
-     */
-    private $html = null;
-
     /**
      * Set the HTML markup.
      *
      * @param string $html HTML markup
      *
-     * @throws InputException If input is not a valid string
+     * @throws InputException If input is not a string or empty
+     * @throws InputException If input is not valid HTML
      */
     public function setHtml($html)
     {
         if (!is_string($html) || empty($html)) {
-            throw new InputException('Input must be an HTML string');
+            throw new InputException('Input is empty or not a string');
+        }
+
+        if ($html === strip_tags($html)) {
+            throw new InputException('Input must be valid HTML markup');
         }
 
         $this->html = $html;
-    }
-
-    /**
-     * Returns the HTML markup.
-     *
-     * @throws InputException If input has not yet been set
-     *
-     * @return string
-     */
-    public function getHtml()
-    {
-        if ($this->html === null) {
-            throw new InputException('Input has not yet been set');
-        }
-
-        return $this->html;
     }
 }

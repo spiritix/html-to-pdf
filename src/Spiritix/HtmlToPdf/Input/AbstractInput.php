@@ -12,17 +12,33 @@
 namespace Spiritix\HtmlToPdf\Input;
 
 /**
- * Input handler interface.
+ * Abstract input handler.
  *
  * @package Spiritix\HtmlToPdf\Input
  * @author  Matthias Isler <mi@matthias-isler.ch>
  */
-interface InputInterface
+abstract class AbstractInput implements InputInterface
 {
     /**
-     * Must return the input HTML markup.
+     * The HTML markup.
+     *
+     * @var null|string
+     */
+    protected $html = null;
+
+    /**
+     * Returns the HTML markup.
+     *
+     * @throws InputException If input has not yet been set
      *
      * @return string
      */
-    public function getHtml();
+    public function getHtml()
+    {
+        if ($this->html === null) {
+            throw new InputException('Input has not yet been set');
+        }
+
+        return $this->html;
+    }
 }

@@ -15,7 +15,7 @@ use Spiritix\HtmlToPdf\Input\InputInterface;
 use Spiritix\HtmlToPdf\Output\OutputInterface;
 
 /**
- * TODO
+ * The actual HTML to PDF converter.
  *
  * @package Spiritix\HtmlToPdf
  * @author  Matthias Isler <mi@matthias-isler.ch>
@@ -116,7 +116,8 @@ class Converter
      * @param string $key   Option key, must not contain prefix
      * @param string $value Option value
      *
-     * @throws ConverterException If option key is empty or invalid
+     * @throws ConverterException If option key is empty
+     * @throws ConverterException If option key was provided with prefix
      *
      * @return Converter
      */
@@ -160,7 +161,9 @@ class Converter
     /**
      * Runs the conversion.
      *
-     * @throws ConverterException If no data was returned or if an error occured
+     * @throws ConverterException If a binary error occurred
+     * @throws ConverterException If a shell error occurred
+     * @throws ConverterException If no data was returned
      *
      * @return OutputInterface
      */
@@ -227,30 +230,9 @@ class Converter
             $optionsString .= $key . ' ' . $value . ' ';
         }
 
-        $command = $this->getLibrary() . ' ' . $optionsString . ' - -';
+        $command = $this->getBinaryPath() . ' ' . $optionsString . ' - -';
 
         return $command;
-    }
-
-    /**
-     * Returns the absolute path to the binary.
-     *
-     * @throws ConverterException If binary could not be found
-     *
-     * @return string
-     */
-    private function getLibrary()
-    {
-        $system = $this->executeShellCommand('grep -i amd /proc/cpuinfo');
-        $library = (!empty($system['output'])) ? self::PATH_BINARY_AMD : self::PATH_BINARY_INTEL;
-
-        $path = '' . $library; // TODO get composer vendor path here
-
-        if (!file_exists($path)) {
-            throw new ConverterException('Binary could not be found');
-        }
-
-        return $path;
     }
 
     /**
@@ -287,5 +269,34 @@ class Converter
         $result['result'] = (int) proc_close($proc);
 
         return $result;
+    }
+
+    /**
+     * Returns the absolute path to the binary.
+     *
+     * @todo The hardcoded paths to the vendor folders are not optimal.
+     *
+     * @throws ConverterException If binary could not be found
+     *
+     * @return string
+     */
+    private function getBinaryPath()
+    {
+        $system = $this->executeShellCommand('uname -a | grep 64');
+        $library = (!empty($system['output'])) ? self::PATH_BINARY_AMD : self::PATH_BINARY_INTEL;
+
+        // First of all we try a path assuming that this library is installed as a package
+        $binaryPath = dirname(__FILE__) . '/../../../../../' . $library;
+
+        // If this doesn't work, we try the vendors of this package
+        if (!file_exists($binaryPath)) {
+            $binaryPath = dirname(__FILE__) . '/../../../vendor/' . $library;
+        }
+
+        if (!file_exists($binaryPath)) {
+            throw new ConverterException('Binary could not be found');
+        }
+
+        return $binaryPath;
     }
 }
