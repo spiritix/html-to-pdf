@@ -35,7 +35,46 @@ php composer.phar require spiritix/html-to-pdf
 
 ## Usage
 
-TODO
+The usage of this library is very simple. 
+You just need a converter instance, pass an input and an output handler to it and set some options if you like.
+After running the conversion, the converter will provide you with the output handler instance.
+Now you may use it's specific functionality to get your PDF file.
+
+```php
+use Spiritix\HtmlToPdf\Converter;
+use Spiritix\HtmlToPdf\Input\UrlInput;
+use Spiritix\HtmlToPdf\Output\DownloadOutput;
+
+$input = new UrlInput();
+$input->setUrl('https://www.google.com');
+
+$converter = new Converter($input, new DownloadOutput());
+
+$converter->setOption('d', '300');
+$converter->setOptions([
+    'margin-bottom' => '100',
+    'margin-top' => '100',
+]);
+
+$output = $converter->convert();
+$output->download();
+```
+
+### Input handlers
+
+The following input handlers are available:
+
+- StringInput - Provide the PDF contents as a string
+- UrlInput - Fetch the PDF contents from an URL
+
+### Output handlers
+
+The following output handlers are available:
+
+- StringOutput - Get the PDF contents as a string
+- FileOutput - Store the PDF to your file system
+- DownloadOutput - Force the browser to download the PDF file
+- EmbedOutput - Force the browser to embed the PDF file
 
 ## Options
 
