@@ -49,7 +49,7 @@ class DownloadOutput extends AbstractOutput
         header('Content-Type: application/pdf', false);
         header('Content-Disposition: attachment; filename="' . basename($fileName) .'";');
         header('Content-Transfer-Encoding: binary');
-        header('Content-Length: ' . mb_strlen($this->getPdfData()));
+        header('Content-Length: ' . strlen($this->getPdfData()));
 
         echo $this->getPdfData();
 
