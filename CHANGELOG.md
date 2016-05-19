@@ -7,6 +7,10 @@
 
 ### Fixed
 
+## [2.0.1] - 2016-05-19
+### Fixed
+- Fixed a critical bug
+
 ## [2.0] - 2016-05-18
 ### Added
 - Started everything from scratch
