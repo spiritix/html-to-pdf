@@ -43,7 +43,7 @@ class EmbedOutput extends AbstractOutput
         header('Pragme: public');
         header('Expires: Sat, 26 Jul 1997 05:00:00 GMT');
         header('Last-Modified: ' . gmdate('D, d m Y H:i:s') . ' GMT');
-        header('Content-Length: ' . mb_strlen($this->getPdfData()));
+        header('Content-Length: ' . strlen($this->getPdfData()));
         header('Content-Disposition: inline; filename="' . basename($fileName) .'";');
 
         echo $this->getPdfData();
