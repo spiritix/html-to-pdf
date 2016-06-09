@@ -123,6 +123,11 @@ class Converter
      */
     public function setOption($key, $value = '')
     {
+        if (is_numeric($key) && !empty($value)) {
+            $key = $value;
+            $value = '';
+        }
+
         if (!is_string($key) || empty($key)) {
             throw new ConverterException('Option key must not be empty');
         }
@@ -224,9 +229,10 @@ class Converter
                 $key = self::SHELL_COMMAND_PREFIX_REGULAR . $key;
             }
 
-            $key = escapeshellcmd(trim($key));
-            $value = escapeshellarg(trim($value));
+            $key = trim($key);
+            $value = trim($value);
 
+            $optionsString .= ' ' . (empty($value) ? escapeshellcmd($key) : (escapeshellcmd($key) . ' ' . escapeshellarg($value)));
             $optionsString .= $key . ' ' . $value . ' ';
         }
 
