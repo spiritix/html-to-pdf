@@ -25,13 +25,18 @@ class ConverterTest extends TestCase
 
     public function testOptions()
     {
+        $this->converter->setOption('n');
         $this->converter->setOption('R', '500');
         $this->converter->setOption('margin-top', '100');
 
         $this->converter->setOptions([
+            'ignore-load-errors',
             'B' => '50',
             'margin-left' => '10',
         ]);
+
+        $value = $this->converter->getOption('n');
+        $this->assertEquals('', $value);
 
         $value = $this->converter->getOption('R');
         $this->assertEquals('500', $value);
@@ -41,8 +46,10 @@ class ConverterTest extends TestCase
 
         $options = $this->converter->getOptions();
         $this->assertEquals([
+            'n' => '',
             'R' => '500',
             'margin-top' => '100',
+            'ignore-load-errors' => '',
             'B' => '50',
             'margin-left' => '10',
         ], $options);

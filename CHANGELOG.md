@@ -7,6 +7,10 @@
 
 ### Fixed
 
+## [2.0.2] - 2016-09-20
+### Fixed
+- Fixed a bug with options without values
+
 ## [2.0.1] - 2016-05-19
 ### Fixed
 - Fixed a critical bug

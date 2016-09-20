@@ -152,6 +152,13 @@ class Converter
         }
 
         foreach ($options as $key => $value) {
+
+            // Convert key-only options to regular ones
+            if (is_numeric($key) && !empty($value)) {
+                $key = $value;
+                $value = '';
+            }
+
             $this->setOption($key, $value);
         }
 
@@ -225,9 +232,9 @@ class Converter
             }
 
             $key = escapeshellcmd(trim($key));
-            $value = escapeshellarg(trim($value));
+            $value = trim($value);
 
-            $optionsString .= $key . ' ' . $value . ' ';
+            $optionsString .= $key . (empty($value) ? '' : ' ' . escapeshellarg($value)) . ' ';
         }
 
         $command = $this->getBinaryPath() . ' ' . $optionsString . ' - -';

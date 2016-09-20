@@ -50,8 +50,11 @@ $input->setUrl('https://www.google.com');
 
 $converter = new Converter($input, new DownloadOutput());
 
+$converter->setOption('n');
 $converter->setOption('d', '300');
+
 $converter->setOptions([
+    'no-background',
     'margin-bottom' => '100',
     'margin-top' => '100',
 ]);
