@@ -12,10 +12,10 @@ Convert HTML markup into beautiful PDF files using the famous wkhtmltopdf librar
 ## Features
 
 - Does not require any complex installation or configuration, works out of the box
-- Offers all [options](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt) of wkhtmltopdf
+- Offers all [features](http://wkhtmltopdf.org/usage/wkhtmltopdf.txt) of wkhtmltopdf
 - Possibility to get the HTML from an external URL
 - Possibility to download, embed or save the generated PDF files (or even get their contents as a string)
-- PHP7 and HHVM ready
+- Supports PHP7
 
 ## Requirements
 
@@ -35,7 +35,7 @@ php composer.phar require spiritix/html-to-pdf
 
 ## Usage
 
-The usage of this library is very simple. 
+The usage of this library is pretty simple. 
 You just need a converter instance, pass an input and an output handler to it and set some options if you like.
 After running the conversion, the converter will provide you with the output handler instance.
 Now you may use it's specific functionality to get your PDF file.
