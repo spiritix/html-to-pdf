@@ -9,6 +9,8 @@ Convert HTML markup into beautiful PDF files using the famous wkhtmltopdf librar
 [![Latest Unstable Version](https://poser.pugx.org/spiritix/html-to-pdf/v/unstable.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
 [![License](https://poser.pugx.org/spiritix/html-to-pdf/license.svg)](https://packagist.org/packages/spiritix/html-to-pdf)
 
+**Unfortunately, wkhtmltopdf is based on a very outdated version of WebKit and [not really maintained anymore](https://github.com/wkhtmltopdf/wkhtmltopdf/issues). I've therefore started developing a [new version](https://github.com/spiritix/php-chrome-html2pdf) of this library which is based on Google Chrome. It's not yet stable but you might want to give it a try.**
+
 ## Features
 
 - Does not require any complex installation or configuration, works out of the box
