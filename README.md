@@ -69,8 +69,8 @@ $output->download();
 
 The following input handlers are available:
 
-- StringInput - Provide the PDF contents as a string
-- UrlInput - Fetch the PDF contents from an URL
+- StringInput - Accepts the HTML contents as a string
+- UrlInput - Fetch the HTML contents from an URL
 
 ### Output handlers
 
